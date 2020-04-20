@@ -22,6 +22,8 @@ services:
       # Use single node discovery in order to disable production mode and avoid bootstrap checks
       # see https://www.elastic.co/guide/en/elasticsearch/reference/current/bootstrap-checks.html
       discovery.type: single-node
+    env_file:
+      - .env
     networks:
       - elk
 
@@ -48,6 +50,8 @@ services:
       - "9600:9600"
     environment:
       LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+    env_file:
+      - .env
     networks:
       - elk
     depends_on:
@@ -58,8 +62,6 @@ services:
       context: kibana/
       args:
         ELK_VERSION: $ELK_VERSION
-    env_file:
-      - .env
     volumes:
       - type: bind
         source: ./kibana/config/kibana.yml
@@ -67,6 +69,8 @@ services:
         read_only: true
     ports:
       - "5601:5601"
+    env_file:
+      - .env
     networks:
       - elk
     depends_on:
