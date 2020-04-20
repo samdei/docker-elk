@@ -34,15 +34,15 @@ services:
         ELK_VERSION: $ELK_VERSION
     volumes:
       - type: bind
-        source: ./logstash/config/logstash.yml
-        target: /usr/share/logstash/config/logstash.yml
+        source: ./logstash/config
+        target: /usr/share/logstash/config
         read_only: true
       - type: bind
         source: ./logstash/pipeline
         target: /usr/share/logstash/pipeline
         read_only: true
       - type: bind
-        source: ./logstash/config/mysql-connector-java-8.0.19.jar
+        source: ./logstash/lib/mysql-connector-java-8.0.19.jar
         target: /usr/share/logstash/logstash-core/lib/jars/mysql-connector-java-8.0.19.jar
         read_only: true
       - type: bind
