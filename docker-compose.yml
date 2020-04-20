@@ -42,6 +42,10 @@ services:
         target: /usr/share/logstash/pipeline
         read_only: true
       - type: bind
+        source: ./logstash/config/mysql-connector-java-8.0.19.jar
+        target: /usr/share/logstash/logstash-core/lib/jars/mysql-connector-java-8.0.19.jar
+        read_only: true
+      - type: bind
         source: ./logstash/lastrun
         target: /usr/share/logstash/lastrun
     ports:

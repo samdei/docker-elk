@@ -9,9 +9,6 @@ RUN rm -f /usr/share/logstash/pipeline/logstash.conf
 # Install jdbc input plugin
 RUN logstash-plugin install logstash-integration-jdbc
 
-# Add mysql connector
-COPY config/mysql-connector-java-8.0.19.jar /usr/share/logstash/logstash-core/lib/jars/
-
 # Add last run files directory
 RUN mkdir /usr/share/logstash/lastrun && \
     chmod 777 /usr/share/logstash/lastrun
