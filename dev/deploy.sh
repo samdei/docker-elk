@@ -1,1 +1,0 @@
-docker-compose -p dev_docker-elk up -d
