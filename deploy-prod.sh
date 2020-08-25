@@ -1,1 +1,0 @@
-docker-compose -f docker-compose.prod.yml -p prod_docker-elk up -d

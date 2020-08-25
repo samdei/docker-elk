@@ -1,0 +1,1 @@
+docker-compose -p prod_docker-elk up -d
