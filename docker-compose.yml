@@ -2,6 +2,7 @@ version: '3.2'
 
 services:
   elasticsearch:
+    container_name: dev_elasticsearch
     build:
       context: elasticsearch/
       args:
@@ -12,7 +13,7 @@ services:
         target: /usr/share/elasticsearch/config/elasticsearch.yml
         read_only: true
       - type: volume
-        source: elasticsearch
+        source: dev_elasticsearch
         target: /usr/share/elasticsearch/data
     ports:
       - "9201:9200"
@@ -25,7 +26,7 @@ services:
     env_file:
       - .env
     networks:
-      - elk
+      - dev_elk
 
   # logstash:
   #   build:
@@ -62,6 +63,7 @@ services:
   #     - elasticsearch
 
   kibana:
+    container_name: dev_kibana
     build:
       context: kibana/
       args:
@@ -76,13 +78,13 @@ services:
     env_file:
       - .env
     networks:
-      - elk
+      - dev_elk
     depends_on:
       - elasticsearch
 
 networks:
-  elk:
+  dev_elk:
     driver: bridge
 
 volumes:
-  elasticsearch:
+  dev_elasticsearch:
